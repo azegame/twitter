@@ -2,11 +2,13 @@ package controller
 
 import (
     //"fmt"
+    "strconv"
 
     "github.com/gin-gonic/gin"
     //_ "github.com/mattn/go-sqlite3"
 
-    "twitter/service" 
+    "twitter/service"
+    "twitter/model/repository"
     //"twitter/model/entity" 
 )
 
@@ -80,5 +82,30 @@ func logout(c *gin.Context) {
     c.SetCookie("userToken", "", 0, "/", "localhost", false, true)
     c.Redirect(303, "/login")
 }
+
+
+func userPage(c *gin.Context) {
+	userId, _ := strconv.Atoi(c.Param("UserId"))
+	//repositoryからの呼び出し
+	user, _ := repository.FindUserByUserId(userId)
+	tweets := repository.GetTweet(userId)
+	//tweetがまだありません処理
+
+	c.HTML(409, "user.html", gin.H{
+    		"username": user.UserName,
+    		"tweets": tweets,
+    	})
+}
+
+
+
+
+
+
+
+
+
+
+
 
 

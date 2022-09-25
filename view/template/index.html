@@ -6,12 +6,22 @@
 </head>
 <body>
 	{{.error}}
-    <p>{{.name}}さんのマイページ</p>
+    <p>{{.myname}}さんのマイページ</p>
+    <p><a href="/logout">ログアウト</a></p>
     <form method="POST" action="/tweets">
 		<p><textarea style="min-width:40em; height:5em;"
 			rows="4" cols="12" name="message"></textarea></p>
 		<p><input type="submit" value="ツイートする"></p>
 	</form>
-	<p><a href="/logout">ログアウト</a></p>
+	他のユーザー
+	<table>
+		<tbody>
+			{{range .users}}
+			<tr>
+				<td><a href="/users/{{.UserId}}">{{.UserName}}</a></td>
+			</tr>
+			{{end}}
+		</tbody>
+	</table>
 </body>
 </html>

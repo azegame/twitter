@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>userpage - twitter</title>
+</head>
+<body>
+	{{.error}}
+    <p>{{.username}}さんのツイート</p>
+    <p><a href="/">マイページへ</a></p>
+    <table>
+		<tbody>
+			{{range .tweets}}
+			<tr>
+				<td>{{.UserId}}</td>
+				<td>{{.CreateAt}}</td>
+			</tr>
+		</tbody>
+		<p style="white-space:pre-wrap">{{.Message}}</p>
+	</table>
+	{{end}}
+</body>
+</html>

@@ -29,7 +29,7 @@ func Signup(userName string, password string) bool {
 
 func userExists(userName string) bool {
     // ユーザーが見つからなければエラー(重複していない時)
-    _, err := repository.FindUser(userName)
+    _, err := repository.FindUserByUserName(userName)
     if err != nil {
         return false
     }
@@ -43,7 +43,7 @@ func encryptPassword(password string) (string, error) {
 }
 
 func GetUserId(userName string, password string) int {
-    user, err := repository.FindUser(userName)
+    user, err := repository.FindUserByUserName(userName)
 
     if err != nil {
         fmt.Println(err)
@@ -64,4 +64,13 @@ func CompareHashAndPassword(hash, password string) error {
     //fmt.Println(err)    //hashedPassword is not the hash of the given password
     return err
 }
+
+
+
+
+
+
+
+
+
 
