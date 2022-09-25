@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS users (
+	user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	user_name TEXT NOT NULL UNIQUE,
+	password TEXT NOT NULL,
+	create_at TEXT NOT NULL DEFAULT (DATETIME('now', 'localtime'))
+);
+
+
+CREATE TABLE IF NOT EXISTS tweets (
+	tweet_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	user_id INTEGER NOT NULL, 
+	message TEXT NOT NULL,
+	create_at TEXT NOT NULL DEFAULT (DATETIME('now', 'localtime'))
+);
+

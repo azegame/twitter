@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>login - twitter</title>
+</head>
+<body>
+  <h2>ログイン</h2>
+  {{.error}}
+  <form method="POST" action="login">
+	 <p><input type="text" name="username" placeholder="ユーザー名"></p>
+	 <p><input type="password" name="password" placeholder="パスワード"></p>
+    <p><button type="submit">ログイン</button></p>
+  </form>
+  <a href="/signup">ユーザー登録</a>
+</body>
+</html>
