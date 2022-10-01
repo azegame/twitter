@@ -2,14 +2,13 @@ package controller
 
 import (
     //"fmt"
-    //"strconv"
+    "strconv"
 
     "github.com/gin-gonic/gin"
-    //"github.com/golang-jwt/jwt/v4"
-    //_ "github.com/mattn/go-sqlite3"
+    "github.com/golang-jwt/jwt/v4"
 
     "twitter/service"
-    //"twitter/model/repository"
+    "twitter/model/repository"
     //"twitter/model/entity" 
 )
 
@@ -76,4 +75,39 @@ func logout(c *gin.Context) {
     c.SetCookie("userToken", "", 0, "/", "localhost", false, true)
     c.Redirect(303, "/login")
 }
+
+
+func otherUserPage(c *gin.Context) {
+    claims := c.Keys["claims"]
+    userIdByJWT := int(claims.(jwt.MapClaims)["user_id"].(float64))
+    otherUserId, _ := strconv.Atoi(c.Param("UserId"))
+
+    user, _ := repository.FindUserByUserId(otherUserId)
+    tweets := repository.GetTweetInfo(otherUserId)
+
+    if service.IsFollowing(userIdByJWT, otherUserId) {
+        //followする
+           c.HTML(200, "follow.html", gin.H{
+            "username": user.UserName,
+            "followid": userIdByJWT,
+            "followeeid": otherUserId,
+            "followstate": "unfollow",
+            "tweets": tweets,
+        })
+    } else {
+        //unfollowにする
+        c.HTML(200, "follow.html", gin.H{
+            "username": user.UserName,
+            "followid": userIdByJWT,
+            "followeeid": otherUserId,
+            "followstate": "follow",
+            "tweets": tweets,
+        })
+    }
+    //tweetがまだありません処理
+}
+
+
+
+
 
