@@ -13,10 +13,10 @@
       <p><button type="submit">{{.followstate}}</button></p>
   </form>
     <p><a href="/">マイページへ</a></p>
+    {{range .tweets}}
     <p>
     <table>
 		<tbody>
-			{{range .tweets}}
 			<tr>
 				<td>{{.UserName}}</td>
 				<td>{{.CreateAt}}</td>

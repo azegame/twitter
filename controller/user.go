@@ -86,7 +86,6 @@ func otherUserPage(c *gin.Context) {
     tweets := repository.GetTweetInfo(otherUserId)
 
     if service.IsFollowing(userIdByJWT, otherUserId) {
-        //followする
            c.HTML(200, "follow.html", gin.H{
             "username": user.UserName,
             "followid": userIdByJWT,
@@ -95,7 +94,6 @@ func otherUserPage(c *gin.Context) {
             "tweets": tweets,
         })
     } else {
-        //unfollowにする
         c.HTML(200, "follow.html", gin.H{
             "username": user.UserName,
             "followid": userIdByJWT,

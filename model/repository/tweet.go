@@ -42,7 +42,7 @@ func GetTweetInfo(userId int) []entity.TweetInfo {
 		 	T.create_at`,
 		userId,
 	)
-	fmt.Printf("GetTweetInfo()のエラー %v\n ", err)
+	fmt.Printf("GetTweetInfo()のエラー %v\n", err)
 
 	for rows.Next() {
 		r := entity.TweetInfo{}

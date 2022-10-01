@@ -90,7 +90,7 @@ func GetOtherUser(userId int) []entity.User {
 		 	user_id`,
 		userId,
 	)
-	fmt.Printf("GetOtherUser())のエラー %v\n ", err)
+	fmt.Printf("GetOtherUser())のエラー %v\n", err)
 
 	for rows.Next() {
 		r := entity.User{}

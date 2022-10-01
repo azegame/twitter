@@ -13,6 +13,17 @@
 			rows="4" cols="12" name="message"></textarea></p>
 		<p><input type="submit" value="ツイートする"></p>
 	</form>
+	{{range .timeline}}
+	<table>
+		<tbody>
+			<tr>
+				<td>{{.UserName}}</td>
+				<td>{{.CreateAt}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="white-space:pre-wrap">{{.Message}}</p>
+	{{end}}
 	他のユーザー
 	<table>
 		<tbody>
