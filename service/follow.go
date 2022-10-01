@@ -13,9 +13,9 @@ func IsFollowing(userIdByJWT int, otherUserId int) bool {
 	_, err := repository.SearchFollowInfo(userIdByJWT, otherUserId)
 	if err != nil {
 		fmt.Println(err)
-		return true
-	} else {
 		return false
+	} else {
+		return true
 	}
 }
 

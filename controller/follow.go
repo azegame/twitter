@@ -28,7 +28,7 @@ func otherUserPage(c *gin.Context) {
             "username": user.UserName,
             "followid": userIdByJWT,
             "followeeid": otherUserId,
-            "followstate": "follow",
+            "followstate": "unfollow",
             "tweets": tweets,
         })
     } else {
@@ -37,7 +37,7 @@ func otherUserPage(c *gin.Context) {
             "username": user.UserName,
             "followid": userIdByJWT,
             "followeeid": otherUserId,
-            "followstate": "unfollow",
+            "followstate": "follow",
             "tweets": tweets,
         })
     }
