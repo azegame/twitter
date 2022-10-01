@@ -18,6 +18,7 @@ func indexPage(c *gin.Context) {
     //claimsはjwt.MapClaims型と型アサーション、
     //取り出したuserNameはstringなのでstring型と認識
     userName := claims.(jwt.MapClaims)["user_name"]//.(string)
+
     users := repository.GetOtherUser(userId)
 
 
@@ -28,18 +29,20 @@ func indexPage(c *gin.Context) {
 }
 
 
-func postTweetAnd(c *gin.Context) {
+func postTweet(c *gin.Context) {
 	claims := c.Keys["claims"]
     userId := int(claims.(jwt.MapClaims)["user_id"].(float64))
 	userName := claims.(jwt.MapClaims)["user_name"]
 
+    users := repository.GetOtherUser(userId)
 	message := c.PostForm("message")
 
 	err := service.Tweet(userId, message)
 
 	c.HTML(200, "index.html", gin.H{
-		"name": userName,
-		"error": err,
+        "error": err,
+		"myname": userName,
+        "users": users,
 	})
 }
 

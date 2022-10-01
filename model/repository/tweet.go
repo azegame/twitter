@@ -23,31 +23,35 @@ func InsertTweetInfo(userId int, message string) error {
 }
 
 
-func GetTweet(userId int) []entity.Tweet {
-	var tweets []entity.Tweet
+func GetTweetInfo(userId int) []entity.TweetInfo {
+	var tweets []entity.TweetInfo
 	rows, err := db.Query(
 		`SELECT
-			tweet_id,
-			user_id,
-			message,
-			create_at
+			T.tweet_id,
+			T.user_id,
+			T.message,
+			T.create_at,
+			U.user_name
 		 FROM
-		 	tweets
+		 	tweets AS T LEFT OUTER JOIN users AS U
+		 ON
+		 	T.user_id = U.user_id
 		 WHERE
-		 	user_id = ?
+		 	T.user_id = ?
 		 ORDER BY
-		 	create_at`,
+		 	T.create_at`,
 		userId,
 	)
-	fmt.Printf("GetTweet())のエラー %v\n ", err)
+	fmt.Printf("GetTweetInfo()のエラー %v\n ", err)
 
 	for rows.Next() {
-		r := entity.Tweet{}
+		r := entity.TweetInfo{}
 		err = rows.Scan(
 			&r.TweetId,
 			&r.UserId,
 			&r.Message,
 			&r.CreateAt,
+			&r.UserName,
 		)
 		if err != nil {
 			break

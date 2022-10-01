@@ -20,7 +20,7 @@ func otherUserPage(c *gin.Context) {
     otherUserId, _ := strconv.Atoi(c.Param("UserId"))
 
     user, _ := repository.FindUserByUserId(otherUserId)
-    tweets := repository.GetTweet(otherUserId)
+    tweets := repository.GetTweetInfo(otherUserId)
 
     if service.IsFollowing(userIdByJWT, otherUserId) {
         //followする

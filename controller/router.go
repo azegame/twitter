@@ -22,7 +22,7 @@ func GetRouter() *gin.Engine {
     auth.Use(service.AuthorizationMiddleware()) 
     {
         auth.GET("/", indexPage)
-        auth.POST("/tweets", postTweetAnd)
+        auth.POST("/tweets", postTweet)
         auth.GET("/users/:UserId", otherUserPage)
         auth.POST("/follow", follow)
         auth.POST("/unfollow", unFollow)
