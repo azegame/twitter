@@ -2,13 +2,14 @@ package controller
 
 import (
     //"fmt"
-    "strconv"
+    //"strconv"
 
     "github.com/gin-gonic/gin"
+    //"github.com/golang-jwt/jwt/v4"
     //_ "github.com/mattn/go-sqlite3"
 
     "twitter/service"
-    "twitter/model/repository"
+    //"twitter/model/repository"
     //"twitter/model/entity" 
 )
 
@@ -60,16 +61,9 @@ func login(c *gin.Context) {
         c.Abort()
         return
     }
-
+    
+    //ほぼ出ないエラーはエラーハンドリングせず握りつぶす。
     jwtStr, _ := service.CreateJWT(userId, userName)
-
-    /* ほぼ出ないエラーはエラーハンドリングせず握りつぶす。
-    if err != nil {
-        c.HTML(401, "index.html", gin.H{"error": "tokenの作成に失敗しました。"})
-        c.Abort()
-        return
-    }
-    */
 
     // localhostは定数にする、変更に対応しやすくするため。
     c.SetCookie("userToken", jwtStr, 86460, "/", "localhost", false, true)
@@ -82,30 +76,4 @@ func logout(c *gin.Context) {
     c.SetCookie("userToken", "", 0, "/", "localhost", false, true)
     c.Redirect(303, "/login")
 }
-
-
-func userPage(c *gin.Context) {
-	userId, _ := strconv.Atoi(c.Param("UserId"))
-	//repositoryからの呼び出し
-	user, _ := repository.FindUserByUserId(userId)
-	tweets := repository.GetTweet(userId)
-	//tweetがまだありません処理
-
-	c.HTML(409, "user.html", gin.H{
-    		"username": user.UserName,
-    		"tweets": tweets,
-    	})
-}
-
-
-
-
-
-
-
-
-
-
-
-
 

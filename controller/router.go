@@ -23,7 +23,9 @@ func GetRouter() *gin.Engine {
     {
         auth.GET("/", indexPage)
         auth.POST("/tweets", postTweetAnd)
-        auth.GET("/users/:UserId", userPage)
+        auth.GET("/users/:UserId", otherUserPage)
+        auth.POST("/follow", follow)
+        auth.POST("/unfollow", unFollow)
     }
 
 	return r

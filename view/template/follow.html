@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>userpage - twitter</title>
+</head>
+<body>
+	{{.error}}
+    <p>{{.username}}さん</p>
+    <form method="POST" action="/{{.followstate}}">
+	  <p><input type="hidden" name="followid" value="{{.followid}}"></p>
+	  <p><input type="hidden" name="followeeid" value="{{.followeeid}}"></p>
+      <p><button type="submit">{{.followstate}}</button></p>
+  </form>
+    <p><a href="/">マイページへ</a></p>
+    <p>
+    <table>
+		<tbody>
+			{{range .tweets}}
+			<tr>
+				<td>{{.UserId}}</td>
+				<td>{{.CreateAt}}</td>
+			</tr>
+		</tbody>
+	</table>
+	</p>
+	<p style="white-space:pre-wrap">{{.Message}}</p>
+	{{end}}
+</body>
+</html>

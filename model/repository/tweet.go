@@ -57,4 +57,3 @@ func GetTweet(userId int) []entity.Tweet {
 	return tweets
 }
 
-

@@ -13,3 +13,8 @@ CREATE TABLE IF NOT EXISTS tweets (
 	create_at TEXT NOT NULL DEFAULT (DATETIME('now', 'localtime'))
 );
 
+
+CREATE TABLE IF NOT EXISTS follows (
+	follow_id INTEGER NOT NULL,
+	followee_id INTEGER NOT NULL
+);
