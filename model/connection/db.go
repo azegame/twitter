@@ -15,8 +15,8 @@ func init() {
 	db, err = sql.Open("sqlite3", "./twitter.db")
 	
 	if err != nil {
-        fmt.Println("データベースを開けませんでした。")
-    }
+		fmt.Println("データベースを開けませんでした。")
+	}
 }
 
 

@@ -1,53 +1,53 @@
 package controller
 
 import (
-    //"fmt"
-    //"strconv"
-    
-    "github.com/gin-gonic/gin"
-    "github.com/golang-jwt/jwt/v4"
+	//"fmt"
+	//"strconv"
+	
+	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v4"
 
-    "twitter/model/repository"
-    "twitter/service"
+	"twitter/model/repository"
+	"twitter/service"
 )
 
 
 func indexPage(c *gin.Context) {
-    claims := c.Keys["claims"]
+	claims := c.Keys["claims"]
 	userId := int(claims.(jwt.MapClaims)["user_id"].(float64))
-    //claimsはjwt.MapClaims型と型アサーション、
-    //取り出したuserNameはstringなのでstring型と認識
-    userName := claims.(jwt.MapClaims)["user_name"]//.(string)
+	//claimsはjwt.MapClaims型と型アサーション、
+	//取り出したuserNameはstringなのでstring型と認識
+	userName := claims.(jwt.MapClaims)["user_name"]//.(string)
 
-    users := repository.GetOtherUser(userId)
-    timeLine := repository.GetTimeLine(userId)
+	users := repository.GetOtherUser(userId)
+	timeLine := repository.GetTimeLine(userId)
 
 
-    c.HTML(200, "index.html", gin.H{
-    	"myname": userName,
-    	"users": users,
-        "timeline": timeLine,
-    })
+	c.HTML(200, "index.html", gin.H{
+		"myname": userName,
+		"users": users,
+		"timeline": timeLine,
+	})
 }
 
 
 func postTweet(c *gin.Context) {
-    claims := c.Keys["claims"]
-    userId := int(claims.(jwt.MapClaims)["user_id"].(float64))
+	claims := c.Keys["claims"]
+	userId := int(claims.(jwt.MapClaims)["user_id"].(float64))
 	userName := claims.(jwt.MapClaims)["user_name"]
 
-    users := repository.GetOtherUser(userId)
-    message := c.PostForm("message")
+	users := repository.GetOtherUser(userId)
+	message := c.PostForm("message")
 
-    err := service.Tweet(userId, message)
+	err := service.Tweet(userId, message)
 
-    timeLine := repository.GetTimeLine(userId)
+	timeLine := repository.GetTimeLine(userId)
 
 	c.HTML(200, "index.html", gin.H{
-        "error": err,
+		"error": err,
 		"myname": userName,
-        "users": users,
-        "timeline": timeLine,
+		"users": users,
+		"timeline": timeLine,
 	})
 }
 

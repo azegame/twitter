@@ -1,13 +1,13 @@
 package main
 
 import (
-    "twitter/controller"  
+	"twitter/controller"  
 )
 
 
 func main() {
-    router := controller.GetRouter()
-    router.Run()
+	router := controller.GetRouter()
+	router.Run()
 }
 
 

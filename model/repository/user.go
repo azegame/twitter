@@ -19,9 +19,9 @@ func FindUserByUserName(userName string) (entity.User, error) {
 			password,
 			create_at
 		 FROM
-		 	users
+			 users
 		 WHERE
-		 	user_name = ?`,
+			 user_name = ?`,
 		userName,
 	)
 
@@ -45,9 +45,9 @@ func FindUserByUserId(userId int) (entity.User, error) {
 			password,
 			create_at
 		 FROM
-		 	users
+			 users
 		 WHERE
-		 	user_id = ?`,
+			 user_id = ?`,
 		userId,
 	)
 
@@ -83,11 +83,11 @@ func GetOtherUser(userId int) []entity.User {
 			user_id,
 			user_name
 		 FROM
-		 	users
+			 users
 		 WHERE
-		 	user_id != ?
+			 user_id != ?
 		 ORDER BY
-		 	user_id`,
+			 user_id`,
 		userId,
 	)
 	fmt.Printf("GetOtherUser())のエラー %v\n", err)

@@ -27,9 +27,9 @@ func DeleteFollowInfo(userIdByJWT int, otherUserId int) error {
 		_, err := db.Exec(
 		`DELETE FROM follows
 		 WHERE 
-		 	follow_id = ?
+			 follow_id = ?
 		 AND
-		 	followee_id = ?`,
+			 followee_id = ?`,
 		userIdByJWT,
 		otherUserId,
 	)
@@ -45,11 +45,11 @@ func SearchFollowInfo(userIdByJWT int, otherUserId int) (entity.Follow, error) {
 			follow_id,
 			followee_id
 		 FROM
-		 	follows
+			 follows
 		 WHERE 
-		 	follow_id = ?
+			 follow_id = ?
 		 AND
-		 	followee_id = ?`,
+			 followee_id = ?`,
 		userIdByJWT,
 		otherUserId,
 	)
