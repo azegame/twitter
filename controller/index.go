@@ -20,7 +20,7 @@ func indexPage(c *gin.Context) {
     userName := claims.(jwt.MapClaims)["user_name"]//.(string)
 
     users := repository.GetOtherUser(userId)
-    timeLine := repository.GetTweetInfo(userId)
+    timeLine := repository.GetTimeLine(userId)
 
 
     c.HTML(200, "index.html", gin.H{
@@ -41,7 +41,7 @@ func postTweet(c *gin.Context) {
 
 	err := service.Tweet(userId, message)
 
-    timeLine := repository.GetTweetInfo(userId)
+    timeLine := repository.GetTimeLine(userId)
 
 	c.HTML(200, "index.html", gin.H{
         "error": err,

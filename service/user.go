@@ -22,7 +22,8 @@ func Signup(userName string, password string) bool {
     err := repository.CreateUser(userName, ep)
     if err != nil {
         fmt.Println(err)
-    } 
+    }
+
     return true
 }
 

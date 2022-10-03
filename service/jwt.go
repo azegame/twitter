@@ -35,7 +35,7 @@ func AuthorizationMiddleware()  gin.HandlerFunc {
         claims, err := Authorization(c)
 
         if err != nil {
-            fmt.Printf("AuthorizationMiddleware()のエラー %v\n ", err)
+            fmt.Printf("AuthorizationMiddleware()のエラー %v\n", err)
             c.Redirect(303, "/login")
             c.Abort()
             return

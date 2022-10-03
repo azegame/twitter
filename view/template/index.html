@@ -13,6 +13,7 @@
 			rows="4" cols="12" name="message"></textarea></p>
 		<p><input type="submit" value="ツイートする"></p>
 	</form>
+	タイムライン
 	{{range .timeline}}
 	<table>
 		<tbody>
@@ -22,7 +23,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<p style="white-space:pre-wrap">{{.Message}}</p>
+	<div style="white-space:pre-wrap">{{.Message}}</div>
 	{{end}}
 	他のユーザー
 	<table>

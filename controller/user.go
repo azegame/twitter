@@ -1,7 +1,7 @@
 package controller
 
 import (
-    //"fmt"
+    "fmt"
     "strconv"
 
     "github.com/gin-gonic/gin"
@@ -9,7 +9,6 @@ import (
 
     "twitter/service"
     "twitter/model/repository"
-    //"twitter/model/entity" 
 )
 
 
@@ -23,6 +22,14 @@ func signup(c *gin.Context) {
     password := c.PostForm("password")
 
     if service.Signup(userName, password) {
+        //自分をフォローする処理、タイムライン用
+        userId := service.GetUserId(userName, password)
+
+        err := repository.InsertFollowInfo(userId, userId)
+        if err != nil {
+            fmt.Println(err)
+        }
+
     	c.Redirect(302, "/login")
     	c.Abort()
         return
