@@ -17,9 +17,6 @@ func follow(c *gin.Context) {
     userIdByJWT := int(claims.(jwt.MapClaims)["user_id"].(float64))
     otherUserId, _ := strconv.Atoi(c.PostForm("followeeid"))
 
-    //user, _ := repository.FindUserByUserId(otherUserId)
-    //tweets := repository.GetTweet(otherUserId)
-
     err := repository.InsertFollowInfo(userIdByJWT, otherUserId)
     fmt.Println(err)
 
@@ -31,9 +28,6 @@ func unFollow(c *gin.Context) {
     claims := c.Keys["claims"]
     userIdByJWT := int(claims.(jwt.MapClaims)["user_id"].(float64))
     otherUserId, _ := strconv.Atoi(c.PostForm("followeeid"))
-
-    //user, _ := repository.FindUserByUserId(otherUserId)
-    //tweets := repository.GetTweet(otherUserId)
 
     err := repository.DeleteFollowInfo(userIdByJWT, otherUserId)
     fmt.Println(err)

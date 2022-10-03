@@ -13,7 +13,7 @@ import (
 
 
 func indexPage(c *gin.Context) {
-	claims := c.Keys["claims"]
+    claims := c.Keys["claims"]
 	userId := int(claims.(jwt.MapClaims)["user_id"].(float64))
     //claimsはjwt.MapClaims型と型アサーション、
     //取り出したuserNameはstringなのでstring型と認識
@@ -32,14 +32,14 @@ func indexPage(c *gin.Context) {
 
 
 func postTweet(c *gin.Context) {
-	claims := c.Keys["claims"]
+    claims := c.Keys["claims"]
     userId := int(claims.(jwt.MapClaims)["user_id"].(float64))
 	userName := claims.(jwt.MapClaims)["user_name"]
 
     users := repository.GetOtherUser(userId)
-	message := c.PostForm("message")
+    message := c.PostForm("message")
 
-	err := service.Tweet(userId, message)
+    err := service.Tweet(userId, message)
 
     timeLine := repository.GetTimeLine(userId)
 

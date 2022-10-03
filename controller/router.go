@@ -27,7 +27,6 @@ func GetRouter() *gin.Engine {
         auth.POST("/follow", follow)
         auth.POST("/unfollow", unFollow)
     }
-
 	return r
 }
 

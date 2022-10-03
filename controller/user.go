@@ -18,7 +18,7 @@ func signupPage(c *gin.Context) {
 
 
 func signup(c *gin.Context) {
-	userName := c.PostForm("username")
+    userName := c.PostForm("username")
     password := c.PostForm("password")
 
     if service.Signup(userName, password) {
@@ -37,7 +37,7 @@ func signup(c *gin.Context) {
     	c.HTML(409, "signup.html", gin.H{
     		"error": "既に使われているユーザー名です",
     	})
-	}
+    }
 }
 
 
