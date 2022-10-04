@@ -74,7 +74,6 @@ func CreateUser(userName string, password string) error {
 }
 
 
-//関数名変えたい
 func GetOtherUser(userId int) []entity.User {
 	var users []entity.User
 

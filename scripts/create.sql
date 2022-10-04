@@ -18,3 +18,12 @@ CREATE TABLE IF NOT EXISTS follows (
 	follow_id INTEGER NOT NULL,
 	followee_id INTEGER NOT NULL
 );
+
+
+CREATE TABLE IF NOT EXISTS comments (
+	comment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	tweet_id INTEGER NOT NULL,
+	user_id INTEGER NOT NULL, 
+	message TEXT NOT NULL,
+	create_at TEXT NOT NULL DEFAULT (DATETIME('now', 'localtime'))
+);

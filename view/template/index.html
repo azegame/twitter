@@ -13,24 +13,25 @@
 			rows="4" cols="12" name="message"></textarea></p>
 		<p><input type="submit" value="ツイートする"></p>
 	</form>
-	タイムライン
+	<h3>タイムライン</h3>
 	{{range .timeline}}
 	<table>
 		<tbody>
 			<tr>
-				<td>{{.UserName}}</td>
+				<td>{{.UserName}}さん　</td>
 				<td>{{.CreateAt}}</td>
 			</tr>
 		</tbody>
 	</table>
 	<div style="white-space:pre-wrap">{{.Message}}</div>
+	<a href="/tweets/{{.TweetId}}/comments">>>コメント</a>
 	{{end}}
-	他のユーザー
+	<h3>他のユーザー</h3>
 	<table>
 		<tbody>
 			{{range .users}}
 			<tr>
-				<td><a href="/users/{{.UserId}}">{{.UserName}}</a></td>
+				<td><a href="/users/{{.UserId}}">{{.UserName}}さん</a></td>
 			</tr>
 			{{end}}
 		</tbody>

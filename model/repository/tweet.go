@@ -33,13 +33,13 @@ func GetTweetInfo(userId int) []entity.TweetInfo {
 			T.create_at,
 			U.user_name
 		 FROM
-			 tweets AS T LEFT OUTER JOIN users AS U
+			tweets AS T LEFT OUTER JOIN users AS U
 		 ON
-			 T.user_id = U.user_id
+			T.user_id = U.user_id
 		 WHERE
-			 T.user_id = ?
+			T.user_id = ?
 		 ORDER BY
-			 T.create_at Desc`,
+			T.create_at Desc`,
 		userId,
 	)
 	fmt.Printf("GetTweetInfo()のエラー %v\n", err)
@@ -72,13 +72,13 @@ func GetTimeLine(userId int) []entity.TweetInfo {
 			T.create_at,
 			U.user_name
 		 FROM
-			 tweets AS T LEFT OUTER JOIN users AS U
+			tweets AS T LEFT OUTER JOIN users AS U
 		 ON
-			 T.user_id = U.user_id
+			T.user_id = U.user_id
 		 WHERE
-			 T.user_id 
+			T.user_id 
 		 IN (
-			 SELECT
+			SELECT
 				followee_id
 			FROM
 				follows
@@ -109,16 +109,46 @@ func GetTimeLine(userId int) []entity.TweetInfo {
 }
 
 
+func GetTweetByTweetId(tweetId int) (entity.TweetInfo, error) {
+	var tweet entity.TweetInfo
+
+	row := db.QueryRow(
+		`SELECT
+			T.tweet_id,
+			T.user_id,
+			T.message,
+			T.create_at,
+			U.user_name
+		 FROM
+			tweets AS T LEFT OUTER JOIN users AS U
+		 ON
+			T.user_id = U.user_id
+		 WHERE
+			T.tweet_id = ?`,
+		tweetId,
+	)
+	err := row.Scan(
+		&tweet.TweetId,
+		&tweet.UserId,
+		&tweet.Message,
+		&tweet.CreateAt,
+		&tweet.UserName,
+	)
+	return tweet, err
+}
 
 
 
-/*
-SELECT
-	followee_id
-FROM
-	follows
-WHERE
-	user_id = ?
-*/
+
+
+
+
+
+
+
+
+
+
+
 
 
