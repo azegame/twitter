@@ -51,7 +51,6 @@ func Authorization(c *gin.Context) (jwt.MapClaims, error) {
 
 	token, err := validateToken(signedToken)
 	if err != nil {
-		//fmt.Printf("Authorization()のtokenは %v\n", token)
 		return nil, err
 	}
 

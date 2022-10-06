@@ -90,7 +90,7 @@ func otherUserPage(c *gin.Context) {
 	otherUserId, _ := strconv.Atoi(c.Param("UserId"))
 
 	user, _ := repository.FindUserByUserId(otherUserId)
-	tweets := repository.GetTweetInfo(otherUserId)
+	tweets := repository.GetTweet(otherUserId)
 
 	if service.IsFollowing(userIdByJWT, otherUserId) {
 		   c.HTML(200, "follow.html", gin.H{

@@ -6,6 +6,6 @@ import(
 
 
 func Comment(tweetId int, userId int, message string) error {
-	err := repository.InsertCommentInfo(tweetId, userId, message)
+	err := repository.InsertComment(tweetId, userId, message)
 	return err
 }

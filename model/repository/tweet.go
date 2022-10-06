@@ -10,7 +10,7 @@ import (
 )
 
 
-func InsertTweetInfo(userId int, message string) error {
+func InsertTweet(userId int, message string) error {
 	_, err := db.Exec(
 		`INSERT INTO tweets (
 			user_id,
@@ -23,7 +23,7 @@ func InsertTweetInfo(userId int, message string) error {
 }
 
 
-func GetTweetInfo(userId int) []entity.TweetInfo {
+func GetTweet(userId int) []entity.TweetInfo {
 	var tweets []entity.TweetInfo
 	rows, err := db.Query(
 		`SELECT
@@ -136,19 +136,3 @@ func GetTweetByTweetId(tweetId int) (entity.TweetInfo, error) {
 	)
 	return tweet, err
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

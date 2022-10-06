@@ -6,6 +6,6 @@ import(
 
 
 func Tweet(userId int, message string) error {
-	err := repository.InsertTweetInfo(userId, message)
+	err := repository.InsertTweet(userId, message)
 	return err
 }

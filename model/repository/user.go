@@ -104,4 +104,3 @@ func GetOtherUser(userId int) []entity.User {
 	}
 	return users
 }
-

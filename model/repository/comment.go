@@ -10,7 +10,7 @@ import (
 )
 
 
-func InsertCommentInfo(tweetId int, userId int, message string) error {
+func InsertComment(tweetId int, userId int, message string) error {
 	_, err := db.Exec(
 		`INSERT INTO comments (
 			tweet_id,

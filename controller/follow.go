@@ -17,7 +17,9 @@ func follow(c *gin.Context) {
 	otherUserId, _ := strconv.Atoi(c.PostForm("followeeid"))
 
 	err := repository.InsertFollowInfo(userIdByJWT, otherUserId)
-	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	c.Redirect(303, "/")
 }
@@ -29,7 +31,9 @@ func unFollow(c *gin.Context) {
 	otherUserId, _ := strconv.Atoi(c.PostForm("followeeid"))
 
 	err := repository.DeleteFollowInfo(userIdByJWT, otherUserId)
-	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	c.Redirect(303, "/")
 }

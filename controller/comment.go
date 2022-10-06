@@ -51,6 +51,7 @@ func postComment(c *gin.Context) {
 	if err != nil {
 		fmt.Println(err)
 	}
+	
 	comments := repository.GetComments(tweetId)
 
 	c.HTML(200, "comment.html", gin.H{
