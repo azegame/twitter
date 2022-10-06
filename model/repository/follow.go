@@ -60,6 +60,3 @@ func SearchFollowInfo(userIdByJWT int, otherUserId int) (entity.Follow, error) {
 	)
 	return followInfo, err
 }
-
-
-

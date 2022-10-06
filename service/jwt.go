@@ -8,9 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/golang-jwt/jwt/v4"
-
-	//"twitter/model/entity"
-	//"twitter/model/repository"
 )
 
 
@@ -87,4 +84,3 @@ func extractClaims(token *jwt.Token) (jwt.MapClaims, bool) {
 		return nil, false
 	}
 }
-

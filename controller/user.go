@@ -111,8 +111,3 @@ func otherUserPage(c *gin.Context) {
 	}
 	//tweetがまだありません処理
 }
-
-
-
-
-

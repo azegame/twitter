@@ -1,9 +1,6 @@
 package controller
 
 import (
-	//"fmt"
-	//"strconv"
-	
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"
 
@@ -50,6 +47,3 @@ func postTweet(c *gin.Context) {
 		"timeline": timeLine,
 	})
 }
-
-
-

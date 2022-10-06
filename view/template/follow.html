@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>userpage - twitter</title>
+  <meta charset="UTF-8">
+  <title>userpage - twitter</title>
 </head>
 <body>
-	{{.error}}
-    <p>{{.username}}さん</p>
-    <form method="POST" action="/{{.followstate}}">
-	  <p><input type="hidden" name="followid" value="{{.followid}}"></p>
-	  <p><input type="hidden" name="followeeid" value="{{.followeeid}}"></p>
-      <p><button type="submit">{{.followstate}}</button></p>
+  {{.error}}
+  <p>{{.username}}さん</p>
+  <form method="POST" action="/{{.followstate}}">
+    <p><input type="hidden" name="followid" value="{{.followid}}"></p>
+    <p><input type="hidden" name="followeeid" value="{{.followeeid}}"></p>
+    <p><button type="submit">{{.followstate}}</button></p>
   </form>
-    <p><a href="/">マイページへ</a></p>
-    {{range .tweets}}
-    <p>
-    <table>
-		<tbody>
-		  <tr>
-			<td>{{.UserName}}</td>
-			<td>{{.CreateAt}}</td>
-		  </tr>
-		</tbody>
-	</table>
-	</p>
-	<p style="white-space:pre-wrap">{{.Message}}</p>
-	{{end}}
+  <p><a href="/">マイページへ</a></p>
+  {{range .tweets}}
+  <table>
+    <tbody>
+      <tr>
+        <td>{{.UserName}}</td>
+        <td>{{.CreateAt}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="white-space:pre-wrap">{{.Message}}</p>
+  {{end}}
 </body>
 </html>

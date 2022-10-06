@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>signup - twitter</title>
+  <meta charset="UTF-8">
+  <title>signup - twitter</title>
 </head>
 <body>
   <h2>ユーザー登録</h2>
   {{.error}}
   <form method="POST" action="/signup">
-	  <p><input type="text" name="username" placeholder="ユーザー名"></p>
-	  <p><input type="password" name="password" placeholder="パスワード"></p>
+    <p><input type="text" name="username" placeholder="ユーザー名"></p>
+    <p><input type="password" name="password" placeholder="パスワード"></p>
     <p><button type="submit">登録</button></p>
   </form>
   <a href="/login">ログイン画面</a>

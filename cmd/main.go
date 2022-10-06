@@ -9,6 +9,3 @@ func main() {
 	router := controller.GetRouter()
 	router.Run()
 }
-
-
-

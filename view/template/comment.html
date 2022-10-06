@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>comment - twitter</title>
+  <meta charset="UTF-8">
+  <title>comment - twitter</title>
 </head>
 <body>
-	{{.error}}
-    <p><a href="/">{{.myname}}さんのマイページへ</a></p>
-    <form method="POST" action="/tweets/{{.TweetId}}/comments">
-		<p><textarea style="min-width:40em; height:5em;"
-			rows="4" cols="12" name="message"></textarea></p>
-		<p><input type="submit" value="コメントする"></p>
-	</form>
-	<h3>{{.tweet.UserName}}さんのツイート</h3>
-	<table>
-		<tbody>
-			<tr>
-				<td>{{.tweet.UserName}}さん　</td>
-				<td>{{.tweet.CreateAt}}</td>
-			</tr>
-		</tbody>
-	</table>
-	<div style="white-space:pre-wrap">{{.tweet.Message}}</div>
-	<h3>コメント</h3>
-	{{range .comments}}
-	<table>
-		<tbody>
-			<tr>
-				<td>{{.UserName}}さん　</td>
-				<td>{{.CreateAt}}</td>
-			</tr>
-		</tbody>
-	</table>
-	<div style="white-space:pre-wrap">{{.Message}}</div>
-	{{end}}
+  {{.error}}
+  <p><a href="/">{{.myname}}さんのマイページへ</a></p>
+  <form method="POST" action="/tweets/{{.TweetId}}/comments">
+    <p><textarea style="min-width:40em; height:5em;"rows="4" cols="12" name="message"></textarea>
+    </p>
+    <p><input type="submit" value="コメントする"></p>
+  </form>
+  <h3>{{.tweet.UserName}}さんのツイート</h3>
+  <table>
+    <tbody>
+      <tr>
+        <td>{{.tweet.UserName}}さん　</td>
+        <td>{{.tweet.CreateAt}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="white-space:pre-wrap">{{.tweet.Message}}</div>
+  <h3>コメント</h3>
+  {{range .comments}}
+  <table>
+    <tbody>
+      <tr>
+        <td>{{.UserName}}さん　</td>
+        <td>{{.CreateAt}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="white-space:pre-wrap">{{.Message}}</div>
+  {{end}}
 </body>
 </html>

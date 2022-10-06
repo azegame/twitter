@@ -8,7 +8,6 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 
 	"twitter/model/repository"
-	//"twitter/service"
 )
 
 
@@ -34,7 +33,3 @@ func unFollow(c *gin.Context) {
 
 	c.Redirect(303, "/")
 }
-
-
-
-

@@ -16,7 +16,6 @@ func commentPage(c *gin.Context) {
 	tweetId, _ := strconv.Atoi(c.Param("TweetId"))
 
 	claims := c.Keys["claims"]
-	//userId := int(claims.(jwt.MapClaims)["user_id"].(float64))
 	userName := claims.(jwt.MapClaims)["user_name"]
 
 	tweet, err := repository.GetTweetByTweetId(tweetId)

@@ -64,6 +64,3 @@ func GetComments(tweetId int) []entity.CommentInfo {
 	}
 	return comments
 }
-
-
-

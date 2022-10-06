@@ -3,9 +3,7 @@ package service
 import(
 	"fmt"
 
-	//"github.com/gin-gonic/gin"
-
-   "twitter/model/repository"
+	"twitter/model/repository"
 )
 
 
@@ -18,5 +16,3 @@ func IsFollowing(userIdByJWT int, otherUserId int) bool {
 		return true
 	}
 }
-
-

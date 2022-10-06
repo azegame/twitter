@@ -6,6 +6,3 @@ type User struct {
 	Password string `db:"password"`
 	CreateAt string `db:"create_at"`
 }
-
-
-

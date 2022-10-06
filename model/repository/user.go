@@ -2,7 +2,7 @@ package repository
 
 import (
 	"fmt"
-	//sqlite3、entityのimportはrepositoryだけ
+	
 	 _ "github.com/mattn/go-sqlite3"
 
 	 "twitter/model/entity"

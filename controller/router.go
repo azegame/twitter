@@ -31,4 +31,3 @@ func GetRouter() *gin.Engine {
 	}
 	return r
 }
-

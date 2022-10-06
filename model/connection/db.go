@@ -23,6 +23,3 @@ func init() {
 func GetDB() *sql.DB {
 	return db
 }
-
-
-

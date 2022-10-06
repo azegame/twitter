@@ -3,7 +3,6 @@ package service
 import (
 	"fmt"
 
-	//"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 
 	"twitter/model/repository"
@@ -65,13 +64,3 @@ func CompareHashAndPassword(hash, password string) error {
 	//fmt.Println(err)    //hashedPassword is not the hash of the given password
 	return err
 }
-
-
-
-
-
-
-
-
-
-
